@@ -23,20 +23,28 @@ Obtain residuals ![equation](https://latex.codecogs.com/svg.image?{\color{White}
 **Step 2.** Implement a nonparametric method to estimate the (usually unknown, allowing heteroskedasticity) skedastic function ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\Sigma}). This package contains four different nonparametric approaches to estimate the diagonal elements ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\sigma^2_i}) in ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\Sigma}):
 
 1. Nadaraya-Watson kernel estimator:
-![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\hat{\sigma}^2_i=\frac{\sum_{j=1}^{n}\tilde{e}^{2,RLS}_{j}\mathcal{K}_{h}(x_{-1,i}-x_{-1,j})}{\sum_{j=1}^{n}\mathcal{K}_{h}(x_{-1,i}-x_{-1,j})}})
-where ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\mathcal{K}_h}) is the kernel function with bandwidth h and ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;x_{-1,i}}) is ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;x_{i}}) without constant.
+
+>>![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\hat{\sigma}^2_i=\frac{\sum_{j=1}^{n}\tilde{e}^{2,RLS}_{j}\mathcal{K}_{h}(x_{-1,i}-x_{-1,j})}{\sum_{j=1}^{n}\mathcal{K}_{h}(x_{-1,i}-x_{-1,j})}})
+
+>>where ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\mathcal{K}_h}) is the kernel function with bandwidth h and ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;x_{-1,i}}) is ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;x_{i}}) without constant.
 
 2. k-nearest neighbors estimator:
-![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\hat{\sigma}^2_i=\frac{1}{k}\sum_{j=1}^{n}\mathbf{I}_{k,i}(x_{-1,j})\tilde{e}^{2,RLS}_{j}})
-where ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\mathbf{I}_{k,i}(x_{-1,j})}) is an indicator function equals one if ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;x_{-1,j}}) is within the k nearest observations of ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;x_{-1,i}}).
+
+>>![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\hat{\sigma}^2_i=\frac{1}{k}\sum_{j=1}^{n}\mathbf{I}_{k,i}(x_{-1,j})\tilde{e}^{2,RLS}_{j}})
+
+>>where ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\mathbf{I}_{k,i}(x_{-1,j})}) is an indicator function equals one if ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;x_{-1,j}}) is within the k nearest observations of ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;x_{-1,i}}).
 
 3. Local linear estimator:
-![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\hat{\sigma}^2_i=\iota'_1(Z'_iW_iZ_i)^{-1}Z'_iW_i\tilde{e}^{2,RLS}})
-where ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\iota'_1=(1,0,...,0)}), ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;Z_{i}}) is an n by k matrix with j-th row equals ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;(1,x_{-1,j}-x_{-1,i})}), and ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;W_{i}}) is an n by n diagonal matrix of ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\mathcal{K}_{h}(x_{-1,i}-x_{-1,j})}),.
+
+>>![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\hat{\sigma}^2_i=\iota'_1(Z'_iW_iZ_i)^{-1}Z'_iW_i\tilde{e}^{2,RLS}})
+
+>>where ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\iota'_1=(1,0,...,0)}), ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;Z_{i}}) is an n by k matrix with j-th row equals ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;(1,x_{-1,j}-x_{-1,i})}), and ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;W_{i}}) is an n by n diagonal matrix of ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\mathcal{K}_{h}(x_{-1,i}-x_{-1,j})}),.
 
 4. Series estimator:
-![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\big[\mathbf{\hat{\sigma}}_{1}^{2},...,\mathbf{\hat{\sigma}}_{n}^{2}\big]^{\top}=Q(Q'Q)&space;&space;^{-1}Q'\tilde{e}^{2,RLS}})
-where ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;Q}) is a matrix of approximating function (in this package, a power series).
+
+>>![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;\big[\mathbf{\hat{\sigma}}_{1}^{2},...,\mathbf{\hat{\sigma}}_{n}^{2}\big]^{\top}=Q(Q'Q)&space;&space;^{-1}Q'\tilde{e}^{2,RLS}})
+
+>>where ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;Q}) is a matrix of approximating function (in this package, a power series).
 
 **Step 3.** Obtain the quasi-t statistic of the FGLS estimator:
 
