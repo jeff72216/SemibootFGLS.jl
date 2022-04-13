@@ -1,5 +1,7 @@
 # SemibootFGLS.jl
 
+*Note: If you are viewing this document under light background, please switch to a readable version [README_lightmode.md](https://github.com/jeff72216/SemibootFGLS.jl/blob/main/README_lightmode.md).*
+
 A Julia package for a finite-sample heteroskedasticity-robust feasible generalized least squares (FGLS) test. Given a model:
 
 ![equation](https://latex.codecogs.com/svg.image?{\color{White}&space;y=X\beta&plus;\varepsilon})
