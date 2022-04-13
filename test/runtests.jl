@@ -1,4 +1,5 @@
 using SemibootFGLS
+using LinearAlgebra, Distributions
 using Test
 
 @testset "SemibootFGLS.jl" begin
