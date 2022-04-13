@@ -158,7 +158,7 @@ end
 function semiparamFGLS(X, y, bandwidth, R, q; 
     constant::Bool, nonparm::Function, KernelDensity=nothing, 
     CrossValidation::Bool=true, restricted::Bool=true, 
-    bootstrap::Bool=true, twotails::Bool=nothing, α=nothing, numResample=nothing)
+    bootstrap::Bool=true, twotails=nothing, α=nothing, numResample=nothing)
 
     if restricted==false
         OLSresult = OLS(X, y)
@@ -173,7 +173,7 @@ function semiparamFGLS(X, y, bandwidth, R, q;
     if CrossValidation==false
         if length(bandwidth)==1
             h = bandwidth
-            if !isnothing(kernel)
+            if !isnothing(KernelDensity)
                 Σ̂ = Diagonal(nonparm(h, X, e, constant=constant, kernel=KernelDensity))
             else
                 Σ̂ = Diagonal(nonparm(h, X, e, constant=constant))
