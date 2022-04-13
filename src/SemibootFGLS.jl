@@ -215,4 +215,6 @@ function semiparamFGLS(X, y, bandwidth, R, q;
     end
 end
 
+export OLS, RLS, FGLS, tStatistic, NW, KNN, LL, SR, CV, WildBootstrap, semiparamFGLS
+
 end
