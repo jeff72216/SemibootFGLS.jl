@@ -15,11 +15,11 @@ Apply cross validation to find the optimal smoothing parameter of the nonparamet
 
 ```H```: a Vector, UnitRange, or StepRangeLen of grid points of bandwidth.
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```e```: a vector of length $n$ of the residuals.
+```e```: a vector of length n of the residuals.
 
-```constant```: a boolean variable, ```=true``` if **X** contains a constant term, ```=false``` otherwise.
+```constant```: a boolean variable, ```=true``` if ```X``` contains a constant term, ```=false``` otherwise.
 
 ```nonparm```: a function of nonparametric method which must be chosen from ```NW()```, ```KNN()```, ```LL()```, ```SR()``` in this package.
 
@@ -41,11 +41,11 @@ Return FGLS estimates and variance-covariance matrix
 
 **Arguments**
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```y```: a vector of length $n$ of the explained variable.
+```y```: a vector of length n of the explained variable.
 
-```Σ̂``` : an $n\times n$ diagonal matrix of the estimated skedastic function.
+```Σ̂``` : an n by n diagonal matrix of the estimated skedastic function.
 
 **Value**
 
@@ -59,23 +59,23 @@ KNN(h, X, e; constant::Bool, CV::Bool=false)
 ```
 **Description**
 
-A $k$-nearest neighbors estimator for the skedastic function $\Sigma$.
+A k-nearest neighbors estimator for the skedastic function Σ.
 
 **Arguments**
 
 ```h```: a scalar number of bandwidth which can either be a float or an integer.
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```e```: a vector of length $n$ of the residuals.
+```e```: a vector of length n of the residuals.
 
-```constant```: a boolean variable, ```=true``` if **X** contains a constant term, ```=false``` otherwise.
+```constant```: a boolean variable, ```=true``` if ```X``` contains a constant term, ```=false``` otherwise.
 
 ```CV```: a boolean variable (```false``` by default), ```=true``` if this function is implemented in a cross-validation procedure, ```=false``` otherwise.
 
 **Value**
 
-A vector of length $n$ of the diagonal elements in $\Sigma$ will be returned. 
+A vector of length n of the diagonal elements in Σ will be returned. 
 
 <br>
 <br>
@@ -85,17 +85,17 @@ LL(h, X, e; constant::Bool, CV::Bool=false, kernel::Sampleable{Univariate,Contin
 ```
 **Description**
 
-A local linear estimator for the skedastic function $\Sigma$.
+A local linear estimator for the skedastic function Σ.
 
 **Arguments**
 
 ```h```: a scalar number of bandwidth which can either be a float or an integer.
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```e```: a vector of length $n$ of the residuals.
+```e```: a vector of length n of the residuals.
 
-```constant```: a boolean variable, ```=true``` if **X** contains a constant term, ```=false``` otherwise.
+```constant```: a boolean variable, ```=true``` if ```X``` contains a constant term, ```=false``` otherwise.
 
 ```CV```: a boolean variable (```false``` by default), ```=true``` if this function is implemented in a cross-validation procedure, ```=false``` otherwise.
 
@@ -103,7 +103,7 @@ A local linear estimator for the skedastic function $\Sigma$.
 
 **Value**
 
-A vector of length $n$ of the diagonal elements in $\Sigma$ will be returned. 
+A vector of length n of the diagonal elements in Σ will be returned. 
 
 <br>
 <br>
@@ -113,17 +113,17 @@ NW(h, X, e; constant::Bool, CV::Bool=false, kernel::Sampleable{Univariate,Contin
 ```
 **Description**
 
-A Nadaraya-Watson kernel estimator for the skedastic function $\Sigma$.
+A Nadaraya-Watson kernel estimator for the skedastic function Σ.
 
 **Arguments**
 
 ```h```: a scalar number of bandwidth which can either be a float or an integer.
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```e```: a vector of length $n$ of the residuals.
+```e```: a vector of length n of the residuals.
 
-```constant```: a boolean variable, ```=true``` if **X** contains a constant term, ```=false``` otherwise.
+```constant```: a boolean variable, ```=true``` if ```X``` contains a constant term, ```=false``` otherwise.
 
 ```CV```: a boolean variable (```false``` by default), ```=true``` if this function is implemented in a cross-validation procedure, ```=false``` otherwise.
 
@@ -131,7 +131,7 @@ A Nadaraya-Watson kernel estimator for the skedastic function $\Sigma$.
 
 **Value**
 
-A vector of length $n$ of the diagonal elements in $\Sigma$ will be returned. 
+A vector of length n of the diagonal elements in Σ will be returned. 
 
 <br>
 <br>
@@ -145,9 +145,9 @@ Return OLS estimates and residuals
 
 **Arguments**
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```y```: a vector of length $n$ of the explained variable.
+```y```: a vector of length n of the explained variable.
 
 **Value**
 
@@ -165,13 +165,13 @@ Return RLS estimates and residuals
 
 **Arguments**
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```y```: a vector of length $n$ of the explained variable.
+```y```: a vector of length n of the explained variable.
 
-```R```: a $1\times k$ matrix of restrictions on coefficients.
+```R```: a 1 by k matrix of restrictions on coefficients.
 
-```q```: a one-element vector of restriction $R\beta=q$.
+```q```: a one-element vector of restriction Rβ=q.
 
 **Value**
 
@@ -189,17 +189,17 @@ Apply wild bootstrap to resample the test statistic.
 
 **Arguments**
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```y```: a vector of length $n$ of the explained variable.
+```y```: a vector of length n of the explained variable.
 
 ```bandwidth```: if ```CrossValidation=false```, then provide a scalar number of integer or float bandwidth. If ```CrossValidation=true```, then provide a Vector, UnitRange, or StepRangeLen of grid points of bandwidth.
 
-```R```: a $1\times k$ matrix of restrictions on coefficients.
+```R```: a 1 by k matrix of restrictions on coefficients.
 
-```q```: a one-element vector of restriction $R\beta=q$.
+```q```: a one-element vector of restriction Rβ=q.
 
-```constant```: a boolean variable, ```=true``` if **X** contains a constant term, ```=false``` otherwise.
+```constant```: a boolean variable, ```=true``` if ```X``` contains a constant term, ```=false``` otherwise.
 
 ```nonparm```: a function of nonparametric method which must be chosen from ```NW()```, ```KNN()```, ```LL()```, ```SR()``` in this package.
 
@@ -219,7 +219,7 @@ Apply wild bootstrap to resample the test statistic.
 
 **Value**
 
-A named tuple ```(estimates, vcov, tstat, bootsample, uppercritval, lowercritval)``` will be returned. ```estimates``` is the FGLS estimates, ```vcov``` is the variance-covariance matrix of the FGLS estimates, ```tstat``` is the quasi-$t$ statistic, ```bootsample``` is the bootstrapped sample, ```uppercritval``` is the upper critical value of the test, ```lowercritval``` is the lower critical value of the test.
+A named tuple ```(estimates, vcov, tstat, bootsample, uppercritval, lowercritval)``` will be returned. ```estimates``` is the FGLS estimates, ```vcov``` is the variance-covariance matrix of the FGLS estimates, ```tstat``` is the quasi-t statistic, ```bootsample``` is the bootstrapped sample, ```uppercritval``` is the upper critical value of the test, ```lowercritval``` is the lower critical value of the test.
 
 <br>
 <br>
@@ -229,21 +229,21 @@ SR(h, X, e; constant::Bool)
 ```
 **Description**
 
-A series estimator for the skedastic function $\Sigma$. A power series is applied to be the approximating function.
+A series estimator for the skedastic function Σ. A power series is applied to be the approximating function.
 
 **Arguments**
 
 ```h```: a scalar number of the number of power terms which can either be a float or an integer.
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```e```: a vector of length $n$ of the residuals.
+```e```: a vector of length n of the residuals.
 
-```constant```: a boolean variable, ```=true``` if **X** contains a constant term, ```=false``` otherwise.
+```constant```: a boolean variable, ```=true``` if ```X``` contains a constant term, ```=false``` otherwise.
 
 **Value**
 
-A vector of length $n$ of the diagonal elements in $\Sigma$ will be returned. 
+A vector of length n of the diagonal elements in Σ will be returned. 
 
 <br>
 <br>
@@ -253,21 +253,21 @@ tStatistic(β̂, varβ̂, R, q)
 ```
 **Description**
 
-Return a (quasi)-$t$ statistic
+Return a (quasi)-t statistic
 
 **Arguments**
 
-```β̂```: a vector of length $k$ of the estimates.
+```β̂```: a vector of length k of the estimates.
 
-```varβ̂```: a $k\times k$ variance-covariance matrix of the estimates.
+```varβ̂```: a k by k variance-covariance matrix of the estimates.
 
-```R```: a $1\times k$ matrix of restrictions on coefficients.
+```R```: a 1 by k matrix of restrictions on coefficients.
 
-```q```: a one-element vector of restriction $R\beta=q$.
+```q```: a one-element vector of restriction Rβ=q.
 
 **Value**
 
-A $1\times 1$ matrix of the test statistic will be returned. 
+A 1 by 1 matrix of the test statistic will be returned. 
 
 <br>
 <br>
@@ -283,17 +283,17 @@ Apply wild bootstrap to resample the test statistic.
 
 ```numresample```: an integer of the number of bootstrap resampling.
 
-```X```: an $n\times k$ matrix of explanatory variables.
+```X```: an n by k matrix of explanatory variables.
 
-```e```: a vector of length $n$ of the residuals.
+```e```: a vector of length n of the residuals.
 
-```β̂```: a vector of length $k$ of the estimates.
+```β̂```: a vector of length k of the estimates.
 
-```Σ̂```: an $n\times n$ diagonal matrix of the estimated skedastic function.
+```Σ̂```: an n by n diagonal matrix of the estimated skedastic function.
 
-```R```: a $1\times k$ matrix of restrictions on coefficients.
+```R```: a 1 by k matrix of restrictions on coefficients.
 
-```q```: a one-element vector of restriction $R\beta=q$.
+```q```: a one-element vector of restriction Rβ=q.
 
 ```α```: significance level of the test.
 
